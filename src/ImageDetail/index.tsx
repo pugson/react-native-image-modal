@@ -12,8 +12,7 @@ import {
   PanResponderInstance,
   StatusBar,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import type { Source, ResizeMode, ImageStyle } from 'react-native-fast-image';
+import { Image } from 'expo-image';
 
 import { OnTap, OnMove } from '../types';
 
@@ -73,12 +72,12 @@ interface Props {
     width: number;
     height: number;
   };
-  source: Source | number;
-  resizeMode?: ResizeMode;
+  source: any;
+  resizeMode?: any;
   backgroundColor?: string;
   swipeToDismiss?: boolean;
   hideCloseButton?: boolean;
-  imageStyle?: ImageStyle;
+  imageStyle?: any;
   renderHeader?: (close: () => void) => JSX.Element | Array<JSX.Element>;
   renderFooter?: (close: () => void) => JSX.Element | Array<JSX.Element>;
   onTap?: (eventParams: OnTap) => void;
@@ -107,7 +106,9 @@ export default class ImageDetail extends React.Component<Props> {
   private _isLongPress = false;
   private _centerDiffX = 0;
   private _centerDiffY = 0;
+  // @ts-ignore
   private _singleClickTimeout: undefined | NodeJS.Timeout = undefined;
+  // @ts-ignore
   private _longPressTimeout: undefined | NodeJS.Timeout = undefined;
   private _lastClickTime = 0;
   private _doubleClickX = 0;
@@ -696,7 +697,7 @@ export default class ImageDetail extends React.Component<Props> {
           style={animateConf}
           renderToHardwareTextureAndroid={renderToHardwareTextureAndroid === false ? false : true}
         >
-          <FastImage
+          <Image
             resizeMode={resizeMode}
             style={[
               imageStyle,

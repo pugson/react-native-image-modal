@@ -17,13 +17,7 @@ You can pinch zoom-in/out, double-tap zoom-in/out, move and swipe-to-dismiss.
 
 ## Expo
 
-This library does not support Expo anymore. Because this library uses `react-native-fast-image`.
-
-`1.0.16` is deprecated, but the version supports Expo.
-
-```bash
-npm install --save react-native-image-modal@1.0.16
-```
+This library has been modified to work with Expo (only tested with a custom dev client) by replacing the dependencies to use `expo-image`
 
 ## Blog
 

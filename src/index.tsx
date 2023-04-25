@@ -1,8 +1,7 @@
 import React, { LegacyRef } from 'react';
 import { Animated, View, TouchableOpacity, StatusBar, Platform, Dimensions } from 'react-native';
-import FastImage from 'react-native-fast-image';
-import type { ResizeMode } from 'react-native-fast-image';
-import type { ImageStyle, FastImageProps } from 'react-native-fast-image';
+import { Image } from 'expo-image';
+import type { ImageProps } from 'expo-image';
 
 import { OnTap, OnMove } from './types';
 import ImageDetail from './ImageDetail';
@@ -16,7 +15,7 @@ interface State {
     height: number;
   };
 }
-interface Props extends FastImageProps {
+interface Props extends ImageProps {
   isRTL?: boolean;
   renderToHardwareTextureAndroid?: boolean;
   isTranslucent?: boolean;
@@ -26,8 +25,8 @@ interface Props extends FastImageProps {
   hideCloseButton?: boolean;
   modalRef?: LegacyRef<ImageDetail>;
   disabled?: boolean;
-  modalImageStyle?: ImageStyle;
-  modalImageResizeMode?: ResizeMode;
+  modalImageStyle?: any;
+  modalImageResizeMode?: any;
   onLongPressOriginImage?: () => void;
   renderHeader?: (close: () => void) => JSX.Element | Array<JSX.Element>;
   renderFooter?: (close: () => void) => JSX.Element | Array<JSX.Element>;
@@ -168,7 +167,7 @@ export default class ImageModal extends React.Component<Props, State> {
             onPress={this._open}
             onLongPress={onLongPressOriginImage}
           >
-            <FastImage {...this.props} />
+            <Image {...this.props} />
           </TouchableOpacity>
         </Animated.View>
         <ImageDetail
